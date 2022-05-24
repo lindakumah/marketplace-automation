@@ -1,0 +1,15 @@
+{
+	"viewportWidth": 1920,
+	"viewportHeight": 1080,
+	"browser": "chrome",
+	"pageLoadTimeout": 40000,
+	"defaultCommandTimeout": 10000,
+	"testFiles": ["tests/**/*.spec.js", "tests/**/*.spec.ts"],
+	"video": false,
+	"headless": false,
+	"retries": 1,
+	"scrollBehavior": "center",
+	"chromeWebSecurity": false,
+	"watchForFileChanges": false,
+	"baseUrl": "https://staging.d3o0f92tyu6euq.amplifyapp.com"
+}

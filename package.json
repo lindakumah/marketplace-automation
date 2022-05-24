@@ -1,0 +1,14 @@
+{
+	"name": "marketplace-cypress-automation",
+	"version": "1.0.0",
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run": "cypress run"
+	},
+	"author": "Linda Kumah",
+	"license": "ISC",
+	"devDependencies": {
+		"cypress": "9.7.0",
+		"eslint-plugin-cypress": "2.12.1"
+	}
+}
