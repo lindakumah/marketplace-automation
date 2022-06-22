@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (email, password) => {
+	cy.intercept('POST', '/auth/token/').as('login')
+	cy.get('.loginButton').click()
+	cy.get('#email').type(email)
+	cy.get('#password').type(password)
+	cy.get('[data-testid=LoginIcon]').click()
+	cy.wait('@login')
+})
