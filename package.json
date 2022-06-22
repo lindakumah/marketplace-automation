@@ -1,5 +1,5 @@
 {
-	"name": "marketplace-cypress-automation",
+	"name": "marketplace-e2e-automation",
 	"version": "1.0.0",
 	"scripts": {
 		"cy:open": "cypress open",

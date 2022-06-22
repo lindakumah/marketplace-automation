@@ -1,1 +1,1 @@
-# Cypress Automation on Marketplace Project
+# End-to-End Automation of Marketplace Project
