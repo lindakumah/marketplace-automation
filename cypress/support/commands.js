@@ -23,12 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('visitLoginPage', () => {
+	cy.get('.loginButton').click()
+	cy.url().should('include', '/login')
+})
 
 Cypress.Commands.add('login', (email, password) => {
-	cy.intercept('POST', '/auth/token/').as('login')
-	cy.get('.loginButton').click()
 	cy.get('#email').type(email)
 	cy.get('#password').type(password)
-	cy.get('[data-testid=LoginIcon]').click()
-	cy.wait('@login')
+	cy.get('[data-testid=LoginIcon]')
+		.click()
+		.then(() => {
+			cy.get('[data-testid=ShoppingCartIcon]').should('be.visible')
+		})
 })

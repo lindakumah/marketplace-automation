@@ -11,5 +11,8 @@
 	"scrollBehavior": "center",
 	"chromeWebSecurity": false,
 	"watchForFileChanges": false,
-	"baseUrl": "https://staging.d3o0f92tyu6euq.amplifyapp.com"
+	"baseUrl": "https://staging.d3o0f92tyu6euq.amplifyapp.com",
+	"env": {
+		"MAILOSAUR_API_KEY": "D4pDNCznRgTSOL9T"
+	}
 }
