@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add('visitLoginPage', () => {
+	cy.visit('/')
 	cy.get('.loginButton').click()
 	cy.url().should('include', '/login')
 })
