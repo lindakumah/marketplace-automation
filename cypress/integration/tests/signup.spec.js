@@ -4,40 +4,29 @@ const { email, password, conPassword } = registrationData()
 
 describe('Signup', () => {
 	before(() => {
-		cy.visit('/')
 		cy.visitLoginPage()
 	})
 
-	it('Clicks on signup tab', () => {
+	it('Individual signup and verify account', () => {
 		cy.contains('Sign up')
 			.click()
 			.then(() => {
 				cy.get('button').eq(2).should('have.class', 'active')
 			})
-	})
 
-	it('Enter sign up details', () => {
 		cy.get('#email').type(email)
 		cy.get('#Password').type(password)
-		cy.get('[id*=Confirm]').type(password)
-	})
+		cy.get('[id*=Confirm]').type(conPassword)
 
-	it('Verify that individual radio is selected', () => {
 		cy.get('[class*=PrivateSwitchBase]').eq(3).should('be.checked')
-	})
 
-	it('Click on register button', () => {
 		cy.intercept('POST', 'https://**/api/auth/registration/').as('signup')
 		cy.get('.signup-btn-register').click()
 		cy.wait('@signup')
-	})
 
-	it('Click confirm button', () => {
 		cy.get('button').contains('Confirm').click({ force: true })
 		cy.url().should('contain', `/confirm-account/${email}`)
-	})
 
-	it('Enter verification code', () => {
 		cy.intercept('POST', 'https://**/api/auth/keyinput/').as('confirmAccount')
 		cy.mailosaurGetMessage(serverId, {
 			sentTo: email,

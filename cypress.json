@@ -2,7 +2,7 @@
 	"viewportWidth": 1920,
 	"viewportHeight": 1080,
 	"browser": "chrome",
-	"pageLoadTimeout": 40000,
+	"pageLoadTimeout": 60000,
 	"defaultCommandTimeout": 10000,
 	"testFiles": ["tests/**/*.spec.js", "tests/**/*.spec.ts"],
 	"video": false,
@@ -14,5 +14,6 @@
 	"baseUrl": "https://staging.d3o0f92tyu6euq.amplifyapp.com",
 	"env": {
 		"MAILOSAUR_API_KEY": "D4pDNCznRgTSOL9T"
-	}
+	},
+	"experimentalSessionAndOrigin": true
 }

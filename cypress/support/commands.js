@@ -29,12 +29,21 @@ Cypress.Commands.add('visitLoginPage', () => {
 	cy.url().should('include', '/login')
 })
 
-Cypress.Commands.add('login', (email, password) => {
-	cy.get('#email').type(email)
-	cy.get('#password').type(password)
-	cy.get('[data-testid=LoginIcon]')
-		.click()
-		.then(() => {
-			cy.get('[data-testid=ShoppingCartIcon]').should('be.visible')
-		})
+const login = (email, password) => {
+	cy.session([email, password], () => {
+		cy.intercept('POST', 'https://**/api/auth/token/').as('login')
+		cy.visitLoginPage()
+		cy.get('#email').type(email)
+		cy.get('#password').type(password)
+		cy.get('[data-testid=LoginIcon]').click()
+		cy.wait('@login')
+	})
+}
+
+Cypress.Commands.add('login', login)
+
+Cypress.Commands.add('gotoPostedProductsPage', () => {
+	cy.get('button[type="button"]').first().click()
+	cy.get('[data-testid=ViewModuleOutlinedIcon]').click()
+	cy.url().should('contain', '/posted-products')
 })
